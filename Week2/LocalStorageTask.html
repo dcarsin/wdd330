@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2</title>
+</head>
+
+<textarea style="width:200px; height: 60px;" id="area" placeholder="Write here"></textarea>
+<br>
+
+<button onclick="localStorage.removeItem('area');area.value=''">Clear</button>
+
+<script>
+    area.value = localStorage.getItem('area');
+    area.oninput = () => {
+        localStorage.setItem('area', area.value)
+    };
+</script>
+
+</html>
+
+<!-- I got confused when doing this one. 
+    I'll retry next week as I had something similar to use for reading credentials to access a service, 
+    and I've been told that credentials must be save and read from a file protected. I'll investigate more on this. 
+    I'm attaching another file called work.ts. My question is when reading this 2 variables:
+    const xApiKey: string = "500fbdc8A5f34A4b09A8236Aa604dee33fb3";
+    const organisation: string = "edfb0e33Ae190A4ad6A8a76A7b1d51e2f87a";
+    Do I need to have that store on a local file and read it from there? or it's secure to use it like that? -->

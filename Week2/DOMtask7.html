@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: #E6E6E6;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calendar"></div>
+
+    <script>
+        function createCalendar(elem, year, month) {
+
+            let mon = month - 1; // months in JS are 0..11, not 1..12
+            let d = new Date(year, mon);
+
+            let table = '<table><tr><th>SU</th><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th></tr><tr>';
+
+            for (let i = 0; i < d.getDay(d); i++) {
+                table += '<td></td>';
+            }
+
+            // <td> with actual dates
+            while (d.getMonth() == mon) {
+                table += '<td>' + d.getDate() + '</td>';
+
+                if (d.getDay(d) % 7 == 6) { // first day: Sunday
+                    table += '</tr><tr>';
+                }
+
+                d.setDate(d.getDate() + 1);
+            }
+
+            if (d.getDay(d) != 0) {
+                for (let i = d.getDay(d); i < 7; i++) {
+                    table += '<td></td>';
+                }
+            }
+
+            // close the table
+            table += '</tr></table>';
+
+            elem.innerHTML = table;
+        }
+
+        createCalendar(calendar, 2023, 4);
+    </script>
+
+</body>
+
+</html>
+
+<!-- I had to look at the solution because I was doing it so much harder than it should be
+and I made the first day of the week to start on suunday -->

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interval example</title>
+</head>
+
+<body>
+    <script>
+        function printNumbers(from, to) {		//1- Using setInterval
+            console.log("number: ",from);
+            let start = from;
+            let timerId = setInterval(function () {
+                if (start == to - 1) {
+                    clearInterval(timerId);
+                }
+                start++;
+                console.log("number: ",start);
+            }, 1000);
+        }
+
+        // function printNumbers(from, to) {	//2- Using nested setTimeout.
+        //     console.log("number: ",from);
+        //     let start = from;
+            
+        //     setTimeout(function opt2() {
+        //         if (start < to) {
+        //             setTimeout(opt2, 1000);
+        //         }
+        //         start++;
+        //         console.log("number: ", start);
+        //     }, 1000);
+        // }
+
+        printNumbers(1, 10);
+    </script>
+</body>
+
+</html>
+
+On the grupo meeting we expend some time figuring out the right way to call the funcion productDetails using the async.
+We tried many ways, but we found our answer when starting to debug the different funtions that lead us to the missing parts,
+we corrected them and we were able to get the information across. This is a good example for me to remember: productDetails.mjs
+
+
+import { findProductById } from "./productData.mjs";
+import { setLocalStorage } from "./utils.mjs";
+let product = {};
+
+function addToCart() {
+  setLocalStorage("so-cart", product);
+}
+
+function renderProductDetails() {
+  document.getElementById("productName").innerText = product.Name;
+  document.getElementById("productNameWithoutBrand").innerText =
+    product.NameWithoutBrand;
+  document.getElementById("productImage").setAttribute("src", product.Image);
+  document
+    .getElementById("productImage")
+    .setAttribute("alt", product.NameWithoutBrand);
+  document.getElementById("productFinalPrice").innerText = product.FinalPrice;
+  document.getElementById("productColorName").innerText =
+    product.Colors[0].ColorName;
+  document.getElementById("productDescriptionHtmlSimple").innerHTML =
+    product.DescriptionHtmlSimple;
+  document.getElementById("addToCart").setAttribute("data-id", product.Id);
+}
+
+export default async function productDetails(productId) {
+  // product deatails
+  product = await findProductById(productId);
+  console.log(product);
+  renderProductDetails();
+  document.getElementById("addToCart").addEventListener("click", addToCart);
+}
+
+
+One example of the use of this that I worked out in my actual job is that I was calling 2 async function, and when I was calling the 2nd one,
+the first one didn't responde yet, so I integrated the 2nd call into the first one, so it will run the 2nd one, once the first one responded,
+and I even call a 3rd function escalating the same structure:
+
+let getreservationpromise = getService(SabreController);
+getreservationpromise.buildRequestAddRemark(this.createRmks)
+.then(rsp => {
+	if (this.rmks.length) {
+		getreservationpromise.RemarkUpdate(this.rmks)
+			.then(rsp => {
+				console.log("Remarks were added");
+				getreservationpromise.SendCommandMessage("*.", true, true)
+					.then(rsp => {
+						getreservationpromise.SendCommandMessage("*P5H", true, true)
+							.then(rsp => {
+								if (this.paymentRsp['status'] == "AUTHORISED") {
+									areaService.showBanner('Success', "AUTHORISED: " + this.paymentRsp['authorization_code'] + " - Remarks updated");
+								} else if (this.paymentRsp['status'] == "DECLINED") {
+									areaService.showBanner('Error', "DECLINED - Remarks updated");
+								} else {
+									areaService.showBanner('Error', "Apexx Error - Remarks updated");
+								}
+							})
+					})
+			})
+	}
+	
+})

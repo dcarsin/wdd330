@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2</title>
+</head>
+
+<body>
+    <div id="hour" style="color: red; display: inline-block;"></div>
+    <div id="min" style="color: green; display: inline-block;"></div>
+    <div id="sec" style="color: blue; display: inline-block;"></div>
+    <br>
+    <input type="button" onclick="clockStart()" value="Start">
+    <input type="button" onclick="clockStop()" value="Stop">
+
+    <script>
+        let timer;
+
+        function clockStart() { // run the clock
+            if (!timer) { // only set a new interval if the clock is not running
+                timer = setInterval(clockStart, 1000);
+            }
+            let time = new Date;
+            hour.innerHTML = time.getHours() + `<div style="color: black; display: inline-block;"> :</div>`;
+            min.innerHTML = time.getMinutes() + `<div style="color: black; display: inline-block;"> :</div>`;
+            sec.innerHTML = time.getSeconds();
+        }
+
+        function clockStop() {
+            clearInterval(timer);
+            timer = null; // (**)
+        }
+    </script>
+
+</body>
+
+</html>
+
+<!-- I got very close, -->

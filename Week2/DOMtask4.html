@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2</title>
+
+</head>
+
+<body>
+
+    <ul id="ul"></ul>
+
+</body>
+
+
+<script>
+    function getListContent() {
+        let result = [];
+
+        while (true) {
+            let li = document.createElement('li');
+            const value = prompt("Enter a list item (or press Esc or leave empty to finish)");
+            if (value) {
+                li.append(value);
+                result.push(li)
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    ul.append(...getListContent()); // append + "..." operator = friends!
+</script>
+
+</html>
+
+<!-- aaa appears outside the table structure. That's why it can not be deleted by the table remove()  -->
