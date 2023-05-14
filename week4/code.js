@@ -33,8 +33,8 @@ function MakePayment(paymentPack) {
   const xApiKey = "500fbdc8A5f34A4b09A8236Aa604dee33fb3";
   const organisation = "edfb0e33Ae190A4ad6A8a76A7b1d51e2f87a";
   const refId = paymentPack.refId;
-  this.header = '{ "Content-type": "application/json", "accept":"application/json", "X-APIKEY": "' + xApiKey + '"}';
-  this.payload = JSON.stringify({
+  const header = '{ "Content-type": "application/json", "accept":"application/json", "X-APIKEY": "' + xApiKey + '"}';
+  const payload = JSON.stringify({
     "organisation": organisation,
     "currency": "GBP",
     "amount": paymentPack.total.split(".")[0],
@@ -51,4 +51,6 @@ function MakePayment(paymentPack) {
       "three_ds_required": false
     }
   });
+  console.log("header: ",header);
+  console.log("payload: ",payload);
 }
