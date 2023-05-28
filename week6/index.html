@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>*** Week 6 Notes ***</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="code.js"></script>
+</head>
+
+<body onload="loadProducts()">
+    <form id="orderForm">
+        <table>
+            <tr>
+                <td><label for="company">Company:</label></td>
+                <td><input maxlength="40" type="text" id="company" placeholder="Name" required></td>
+            </tr>
+            <tr>
+                <td><label for="lName">Last Name:</label></td>
+                <td><input maxlength="40" type="text" id="lName" placeholder="Smith" required></td>
+            </tr>
+            <tr>
+                <td><label for="fName">First Name:</label></td>
+                <td><input maxlength="40" type="text" id="fName" placeholder="John" required></td>
+            </tr>
+            <tr>
+                <td><label for="code">6 Digits Id:</label></td>
+                <td><input maxlength="6" type="text" id="code" size="6" placeholder="ABC123" required></td>
+            </tr>
+            <tr>
+                <td><label for="reason">Phone Model:</label></td>
+                <td><select id="select">
+                        <option value="" selected>Select one:</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="travelDte">Pickup date:</label></td>
+                <td><input type="date" id="travelDte" value="" required></td>
+            </tr>
+            <tr>
+        </table>
+
+        <h4>Add additional info for Delivey</h4>
+        <table>
+            <tr>
+                <td><input maxlength="64" size="64" type="text" id="freeText1" placeholder="Free line 1"></td>
+            </tr>
+            <tr>
+                <td><input maxlength="64" size="64" type="text" id="freeText2" placeholder="Free line 2"></td>
+            </tr>
+            <tr>
+                <td><input maxlength="64" size="64" type="text" id="freeText3" placeholder="Free line 3"></td>
+            </tr>
+            </tr>
+        </table>
+        <hr>
+        <input type="submit" value="Submit" onclick="actionItem()">
+    </form>
+</body>
+<script>
+    function actionItem() {
+        // get all selected values from multi-select
+        console.log(document.getElementById('select').selectedOptions[0]);
+        const order = {
+            "Company": document.getElementById('company').value,
+            "Last Name": document.getElementById('lName').value,
+            "First Name": document.getElementById('fName').value,
+            "Code": document.getElementById('code').value,
+            "Phone Id:": document.getElementById('select').selectedOptions[0].value,
+            "Pickup Date": document.getElementById('travelDte').value,
+            "Extra Info 1:": document.getElementById('freeText1').value,
+            "Extra Info 2:": document.getElementById('freeText2').value,
+            "Extra Info 3:": document.getElementById('freeText3').value
+        }
+        console.log(order);
+        alert("Procesing order!");
+    }
+</script>
+
+</html>

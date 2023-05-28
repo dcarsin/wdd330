@@ -55,8 +55,6 @@ async function loadPrice() {
 async function MakePayment() {
   const date = new Date();
   const min = date.getHours() + date.getMinutes() + date.getSeconds();
-  const card = 4111111111111111;
-  const cvv = 110;
   const xApiKey = "500fbdc8A5f34A4b09A8236Aa604dee33fb3";
   const organisation = "edfb0e33Ae190A4ad6A8a76A7b1d51e2f87a";
   const refId = "1234567890";
@@ -67,8 +65,8 @@ async function MakePayment() {
     "amount": document.getElementById('total').textContent,
     "capture_now": false,
     "card": {
-      "card_number": card,
-      "cvv": cvv,
+      "card_number": 4111111111111111,
+      "cvv": 110,
       "expiry_month": 10,
       "expiry_year": 25
     },
@@ -78,15 +76,14 @@ async function MakePayment() {
       "three_ds_required": false
     }
   });
-  console.log("payload",payload);
-
+  
   fetch('https://sandbox.apexx.global/atomic/v1/api/payment', {
-    method: "POST",
-    body: payload,
-    headers: header
-  })
-    .then(response => console.log(response))
-    .then(json => console.log(json));
+  method: "POST",
+  body: payload,
+  headers: header
+})
+.then(response => response.json()) 
+.then(json => console.log(json));
 
-  console.log("response", response);
+  console.log("response",response);
 }
