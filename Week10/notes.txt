@@ -1,0 +1,72 @@
+code notes from video Google DOCs:
+https://docs.google.com/document/d/1X7D3JHYz6S_3YusqFO3onG_sMMWwb-rBPoEjYfR7oI0/edit?usp=sharing
+
+
+const num = 3; 
+function multiplyBy2 (inputNumber){ 		
+	const result = inputNumber * 2; 		//unless you call this function, this will not be executed!
+	return result; 
+} 
+const name = "Will" 
+const output = multiplyBy2(num); 
+const newOutput = multiplyBy2(10); 
+
+
+
+function squareNum(num){  					//generalized our function to return 'num*nu' (a number (times) the same number)
+	return num*num; 
+}		
+
+
+
+function copyArrayAndMultiplyBy2(array) {  
+	const output = []; 
+	for (let i = 0; i < array.length; i++) {  
+		output.push(array[i] * 2); 
+	} 
+	return output; 
+} 
+const myArray = [1,2,3] 
+const result = copyArrayAndMultiplyBy2(myArray)			//at this instance is where the funtions executes the code
+														//and passes the result to 'const result'
+
+
+
+function copyArrayAndDivideBy2(array) {  
+	const output = []; 
+	for (let i = 0; i < array.length; i++) {  
+		output.push(array[i] / 2); 
+	} 
+	return output; 										//what I see here, that we have almost 2 identical function, that made almost the same
+} 														//with the only difference that one multiplies and the other one divides
+const myArray = [1,2,3] 
+const result = copyArrayAndDivideBy2(myArray);
+
+
+
+function copyArrayAndManipulate(array, instructions){  	//on this case, we made the 2 previous functions into one and we passes the mathematiall operation we want to do
+	const output = []; 									//also as a parameter of the function. This one with 1 function, we could do a lot of math operations
+	for (let i = 0; i < array.length; i++) { 
+		output.push(instructions(array[i])); 
+	} 
+	return output; 
+} 
+function multiplyBy2(input) { 
+ return input * 2; 
+} 
+
+
+function copyArrayAndManipulate(array, instructions) {  
+	const output = []; 
+	for (let i = 0; i < array.length; i++) {  
+		output.push(instructions(array[i])); 
+	} 
+	return output; 
+} 
+function multiplyBy2(input) { 										//as we are passing this function, we call it callback function 
+	return input * 2; 
+} 
+const result = copyArrayAndManipulate([1, 2, 3], multiplyBy2); 		//The outer function that takes in the function (our callback) is a higher-order function
+																	//on this example we passes the full function as one parameter to concatenate code in a clean (DRY terminology uses by
+																	//in the example) like in a Higher-order function
+

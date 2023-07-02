@@ -1,1 +1,2 @@
-https://github.com/dcarsin/wdd330/tree/main/week6
+Uploded to Netlify link:
+https://main--dcarsin.netlify.app/week6/index.html

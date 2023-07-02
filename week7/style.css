@@ -1,0 +1,124 @@
+/* In transition-property, we write a list of properties to animate, for instance: left, margin-left, height, color. Or we could write all, which means “animate all properties”. */
+/* In transition-duration we can specify how long the animation should take. The time should be in CSS time format: in seconds s or milliseconds ms. */
+
+.animated {
+    transition-property: background-color;
+    transition-duration: 3s;
+}
+
+#color {
+    transition-property: background-color;
+    transition-duration: 3s;
+}
+
+#growing {
+    transition: font-size 3s, color 2s;
+}
+
+script.jsstyle.cssindex.html #digit {
+    width: .5em;
+    overflow: hidden;
+    font: 32px monospace;
+    cursor: pointer;
+}
+
+#stripe {
+    display: inline-block
+}
+
+#stripe.animate {
+    transform: translate(-90%);
+    transition-property: transform;
+    transition-duration: 9s;
+    transition-timing-function: linear;
+}
+
+.train {
+    position: relative;
+    cursor: pointer;
+    width: 177px;
+    height: 160px;
+    left: 0;
+    transition: left 5s cubic-bezier(0, 0, 1, 1);
+}
+
+
+#digit2 {
+    width: .5em;
+    overflow: hidden;
+    font: 32px monospace;
+    cursor: pointer;
+}
+
+#stripe2 {
+    display: inline-block
+}
+
+#stripe2.animate {
+    transform: translate(-90%);
+    transition-property: transform;
+    transition-duration: 9s;
+    transition-timing-function: steps(9, start);
+}
+
+@keyframes go-left-right {
+
+    /* give it a name: "go-left-right" */
+    from {
+        left: 0px;
+    }
+
+    /* animate from left: 0px */
+    to {
+        left: calc(100% - 50px);
+    }
+
+    /* animate to left: 100%-50px */
+}
+
+.progress {
+    animation: go-left-right 3s infinite alternate;
+    /* apply the animation "go-left-right" to the element
+       duration 3 seconds
+       number of times: infinite
+       alternate direction every time
+    */
+
+    position: relative;
+    border: 2px solid green;
+    width: 50px;
+    height: 20px;
+    background: lime;
+}
+
+#boat2 {
+    cursor: pointer;
+    transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+}
+
+.move {
+    transform: translateX(300px);
+    opacity: 0;
+}
+
+.animated2 {
+    animation: hello-goodbye 1.8s infinite;
+    width: fit-content;
+}
+
+@keyframes hello-goodbye {
+    0% {
+        transform: translateY(-60px) rotateX(0.7turn);
+        opacity: 0;
+    }
+
+    50% {
+        transform: none;
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(230px) rotateZ(90deg) scale(0.5);
+        opacity: 0;
+    }
+}
