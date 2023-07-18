@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week8 notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script type="module" src="adflex.js"></script>
+    <script type="module" src="code.js"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <div class="grayBackground">
+        <div class="alert alert-warning">
+            <div class="sameSize">
+                <tr>
+                    <td><label for="product">Select Product:</label></td>
+                    <td><select name="product" id="product" onchange='changeAction(this.value)'>
+                            <option value="" selected disabled hidden>Select</option>
+                        </select></td>
+                </tr>
+            </div>
+            <hr>
+            <div class="redDisplay">
+                Total to be charge is: <div id="total"></div>
+            </div>
+            <hr>
+            <button class="sameSize" onclick="MakePayment()">Make Payment</button>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+:root {
+    --title: rgb(255, 255, 255);
+    --headerFooter: #334a6e;
+    --background: #dbdbdb;
+    --visited: #84FA9D;
+  }
+  
+  table tr {
+    border-radius: 1px;  
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Merriweather+Sans', Helvetica, sans-serif;
+  }
+  
+  html {
+    background-color: var(--background);
+  }
+  
+  /* header */
+  header,
+  main,
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  header img {
+    padding: 10px;
+    /* max-width: 140px; */
+  }
+  
+  header {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--headerFooter);
+  }
+  
+  header p {
+    text-align: center;
+  }
+  
+  /* main for lazy load 
+  main {
+    margin: auto;
+    justify-content: center;
+    width: fit-content;
+  } */
+  
+  .headings {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+  }
+  
+  .headings,
+  footer {
+    color: var(--title);
+  }
+  
+  footer {
+    text-align: center;
+    background-color: var(--headerFooter);
+  }
+  
+  h1 {
+    /* text-shadow: 2px 2px 5px red; */
+    color: var(--title);
+    margin: 10px;
+  
+    text-align: center;
+  }
+  #thanks h1{
+    color: #000;
+  }
+  
+  /* .centrado {
+    margin-top: 20px;
+    margin: auto;
+  } */
+  
+  /*************** start navigation ****************/
+  nav {
+    margin: 0 auto;
+    max-width: 960px;
+    background-color: rgb(105, 157, 218);
+  }
+  
+  .navigation {
+    /* text-align: center; */
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+  }
+  
+  .navigation li:first-child {
+    display: block;
+  }
+  
+  .navigation li {
+    display: none;
+  }
+  
+  .navigation a {
+    display: block;
+    padding: 0.75rem;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    transition: 0.5s;
+  }
+  
+  .navigation a:hover {
+    font-weight: bold;
+    background-color: var(--background);
+  }
+  
+  .responsive li {
+    display: block;
+  }
+  
+  /**************** end navigation *****************/
+  
+  /* footer a, #lastUpdate {
+    color: var(--title);
+  } */
+  
+  /* visited link */
+  footer a:visited {
+    color: var(--visited);
+  }
+  
+  .herodiv a:visited {
+    color: #000;
+  }
+  
+  .herodiv {
+    position: relative;
+  }
+  .herodiv picture img {
+    max-height: 330px;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  
+  
+  #townPic img {
+    max-width: 960px;
+  }
+  
+  /* .stats */
+  .stats {
+    top: 20px;
+    left: 20px;
+    background: radial-gradient(#eee, #4567aa);
+    border: 1px solid #000;
+    padding: 1.5rem;
+    box-shadow: 0 0 30px #111;
+    line-height: 0;
+  }
+  
+  .stats .heroData {
+    color: #334a6e;
+    font-weight: bold;
+  }
+  
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  }
+  
+  .grid-col {
+    font-weight: bold;
+    background-color: #e0e0e0;
+    border: 1px solid #333;
+    text-align: center;
+    margin: 0 2px 0 2px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .grid img {
+    width: 64px;
+    display: block;
+  }
+  
+  .activities img {
+    float: right;
+    max-width: fit-content;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  /* 
+  .col-head {
+    display: block;
+    padding: 5px;
+    border-bottom: 1px solid #333;
+    text-align: center;
+  } */
+  
+  .data {
+    display: block;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .mapouter {
+    text-align: center;
+    background-color: rgb(105, 157, 218);
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+  
+  .mapouter img {
+    padding: 5px;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .social a {
+    color: #000;
+  }
+  
+  .social img {
+    padding: 10px;
+    max-width: 50px;
+    margin: 0 10px 0 10px;
+  }
+  
+  .active {
+    background-color: #bbb;  
+  }
+  
+  .imagesGallery {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  img.imagesGallery {
+    filter: blur(0px);
+    transition: filter 1s;
+    padding: 2px;
+  }
+  
+  img[data-src] {
+    filter: blur(2px);
+  }
+  
+  .button {
+    border-width: 1px;
+    height: 35px;
+    border-radius: 4px;
+    justify-content: center;
+    box-sizing: border-box;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    background-color: rgb(105, 157, 218);
+  }
+  
+  h2 {
+    text-align: left;
+    margin-left: 20px;
+  }
+  
+  #towns {
+    max-width: 960px;
+    margin: .5rem auto;
+    border: 1px solid #bbb;
+    background-color: #eee;
+  }
+  
+  /* articles */
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+  }
+  
+  article:nth-child(odd) img {
+    grid-column: 2;
+  }
+  
+  article:nth-child(odd) .data {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .data {
+    background-color: rgb(105, 157, 218);
+  }
+  
+  p {
+    padding: .75rem;
+  }
+  
+  #townsFromAPI {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  table{
+    margin: auto;
+  }
+  
+  .flyer {
+    text-align: center;
+    background-color: rgb(105, 157, 218);
+    box-shadow: 8px 8px 8px #628ca6;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 0.7rem;
+  }
+  
+  .flyer p {
+    line-height: 0;
+  }
+  
+  form {
+    /* margin-top: 1em;
+    margin-bottom: 2em; */
+    margin: auto;
+    padding: 1em;
+  }
+  
+  tbody {
+    line-height: 1.8em;
+  }
+  
+  form button {
+    margin-top: 2em;
+  }
+  
+  form .radiosBtn {
+    display: inline-block;
+    margin-left: 0.8em;
+  }
+  
+  form select {
+    padding: 2px;
+    width: 100%;
+  }
+  
+  form textarea, input, #stormDate {
+    width: 100%;
+  }
+  
+  form #rating {
+    width: 88%;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  figure img {
+    border-radius: 10px;
+    max-width: 240px;
+    max-height: 135px;
+    margin: 0 auto;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  section img {
+    margin: 0 auto;
+  }
+  
+  #centerForm {
+    align-items: center;
+  }
+  
+  aside {
+    display: none;
+  }
+  
+  aside, #localEvent{
+    margin: 25px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #bbb;
+    max-width: 960px;
+    border-radius: 2em;
+  }
+  #localEvent {
+    line-height: 0%;
+    max-width: 480px;
+    margin: 0 auto;
+    border: 1px solid #333;
+  }
+  #ratingvalue {
+    color: #002088;
+    font-weight: bold;
+    
+  }
+  
+  .radio {
+    margin-right: 0.5rem;
+  }
+  
+  .radio input {
+    width: auto;
+    margin-left: 10px;
+  }
+  
