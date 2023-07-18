@@ -89,6 +89,7 @@ const copyContent = async () => {
         console.log(textoDiscurso);
         await navigator.clipboard.writeText(textoDiscurso);
         console.log('Content copied to clipboard');
+        alert('stop!');
     } catch (err) {
         console.error('Failed to copy: ', err);
     }
