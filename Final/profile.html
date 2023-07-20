@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discursos</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./my-module.js"></script>
+</head>
+
+<body onload="fetchMembersJSON()">
+    <header>
+        <picture>
+            <img src="images/logo.png" alt="Discurso Logo">
+        </picture>
+    </header>
+    <nav>
+        <ul class="navigation">
+            <li><a href="index.html">Generate Assignment</a></li>
+            <li><a class="active" href="#">Modify Member</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form>
+            <table>
+                <tr>
+                    <td><label for="speakersList">Possible Names:</label></td>
+                    <td><select name="speakersList" id="speakersList" onchange="openItems()">
+                            <option value="" selected>Select name:</option>
+                        </select>
+                    </td>
+                    <!-- <input type="hidden" id="example"> -->
+                </tr>
+                <tr>
+                    <td><label for="active">Active member:</label></td>
+                    <td><select name="active" id="active" disabled>
+                            <option value="" selected>Select:</option>
+                            <option value=true>Yes</option>
+                            <option value=false>No</option>
+                        </select>
+                    </td>
+                    <!-- <input type="hidden" id="example"> -->
+                </tr>
+                <tr>
+                    <td><label for="exclude">Suspended:</label></td>
+                    <td><select name="exclude" id="exclude" disabled>
+                            <option value="" selected>Select:</option>
+                            <option value=true>Yes</option>
+                            <option value=false>No</option>
+                        </select>
+                    </td>
+                    <!-- <input type="hidden" id="example"> -->
+                </tr>
+                <tr>
+                    <td><label for="stormDate">Date of last speech:</label></td>
+                    <td><input type="date" name="stormDate" id="stormDate" disabled></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="button">Update Profile</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </main>
+    <footer>
+        <p>Powered by: El Bosque Ward</p>
+    </footer>
+    <script src="./update.js"></script>
+</body>
+
+</html>
