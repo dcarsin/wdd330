@@ -5,7 +5,7 @@ import { Member } from '../model/Member';
   tableName: 'members',
   timestamps: false,
 })
-export default class FeeEntity extends Model<Member> {
+export default class MemberEntity extends Model<Member> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,

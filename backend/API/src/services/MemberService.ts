@@ -15,6 +15,6 @@ export class MemberService {
     name: string | undefined,
     lastname: string | undefined
   ): Promise<any> {
-    this.memberRepository.search(id, name, lastname);
+    return this.memberRepository.search(id, name, lastname);
   }
 }

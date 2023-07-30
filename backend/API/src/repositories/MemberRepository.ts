@@ -17,10 +17,10 @@ export class MemberRepository {
     name: string | undefined,
     last_name: string | undefined    
   ): Promise<any> {
-    return MemberEntity.findOne({ where: {
-      memberId: id,
-      memberName: name,
-      memberLastName: last_name,
-    } });
+    let whereClause = {};
+    if (id) whereClause['memberId'] = id;
+    if (name) whereClause['memberName'] = name;
+    if (last_name) whereClause['memberLastName'] = last_name;
+    return MemberEntity.findAll({ where: whereClause });
   }
 }

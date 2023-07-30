@@ -3,7 +3,6 @@ import { getMetadataArgsStorage } from "routing-controllers";
 import { routingControllersToSpec } from "routing-controllers-openapi";
 import { validationMetadatasToSchemas } from "class-validator-jsonschema";
 import { defaultMetadataStorage } from "class-transformer/cjs/storage";
-import { Json } from "sequelize/types/utils";
 
 @Service()
 export class SwaggerService {
