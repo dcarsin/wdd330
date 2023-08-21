@@ -1,7 +1,7 @@
 
 
 async function fetchMembersJSON() {
-    const response = await fetch('lista.json');
+    const response = await fetch("http://localhost:4200/api/members");
     const members = await response.json();
     return members.members;
 }
@@ -9,8 +9,8 @@ async function fetchMembersJSON() {
 fetchMembersJSON().then(memberList => {
     memberList.forEach(x => {
         let opt = document.createElement('option');
-        opt.setAttribute('data-value', `${x.LastName}, ${x.Name}`);
-        opt.textContent = `${x.LastName}, ${x.Name}`;
+        opt.setAttribute('data-value', `${x.memberLastName}, ${x.memberName}`);
+        opt.textContent = `${x.memberLastName}, ${x.memberName}`
         document.querySelector('#speakersList').appendChild(opt);
     })
 })
