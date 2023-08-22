@@ -16,12 +16,16 @@ export class MembersController {
     @QueryParam('id') id: number | undefined,
     @QueryParam('name') name: string | undefined,
     @QueryParam('lastname') lastname: string | undefined,
+    @QueryParam('active') active: boolean | undefined,
+    @QueryParam('group') group: string | undefined,
+    @QueryParam('gender') gender: string | undefined,
+
     @Res() response
   ): Promise<any> {
     try {
       return response
         .status(200)
-        .json(await this.MemberService.search(id, name, lastname));
+        .json(await this.MemberService.search(id, name, lastname, active, group, gender));
     } catch (error) {
       console.log(error);
       return response

@@ -13,8 +13,11 @@ export class MemberService {
   public async search(
     id: number | undefined,
     name: string | undefined,
-    lastname: string | undefined
+    lastname: string | undefined,
+    active: boolean | undefined,
+    group: string | undefined,
+    gender: string | undefined,
   ): Promise<any> {
-    return this.memberRepository.search(id, name, lastname);
+    return this.memberRepository.search(id, name, lastname, active, group, gender);
   }
 }

@@ -9,7 +9,7 @@ drop table if exists members;
 create table members(
 id int auto_increment,
 name varchar(50),
-lastname varchar(50),
+lastName varchar(50),
 gender enum('F', 'M'),
 dob date,
 phone varchar(50),

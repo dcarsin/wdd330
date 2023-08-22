@@ -28,6 +28,12 @@ export default class MemberEntity extends Model<Member> {
   memberLastName: string;
 
   @Column({
+    type: DataType.STRING,
+    field: 'gender',
+  })
+  memberGender: string;
+
+  @Column({
     type: DataType.DATE,
     field: 'dob',
   })
