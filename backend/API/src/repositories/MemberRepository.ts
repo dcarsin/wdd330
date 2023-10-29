@@ -27,7 +27,11 @@ export class MemberRepository {
     if (name) whereClause['memberName'] = name;
     if (last_name) whereClause['memberLastName'] = last_name;
     if (active) whereClause['memberStatus'] = active;
-    if (gender) whereClause['memberGender'] = gender; 
+    if (gender) {
+      if(gender !== 'both'){
+        whereClause['memberGender'] = gender; 
+      }
+    }
     if (group) {
       whereClause['memberDateOfBirth'] = group === "anyYoung" ? { [Op.between]: [moment().add(-18, 'years').format('YYYY-MM-DD'), moment().add(-12, 'years').format('YYYY-MM-DD')] } : { [Op.lt]: moment().add(-18, 'years').format('YYYY-MM-DD') }
     }
