@@ -1,6 +1,7 @@
 import { Column, Table, Model, DataType } from 'sequelize-typescript';
 import { Member } from '../model/Member';
 import { Speech } from '../model/Speech';
+import { IsOptional } from "class-validator";
 
 @Table({
   tableName: 'speeches',
@@ -14,6 +15,7 @@ export default class SpeechEntity extends Model<Speech> {
     autoIncrementIdentity: true,
     field: 'id',
   })
+  @IsOptional()
   speechId: number;
 
   @Column({
@@ -36,7 +38,7 @@ export default class SpeechEntity extends Model<Speech> {
 
   @Column({
     type: DataType.DATE,
-    field: 'dissertDate',
+    field: 'dissert_date',
   })
   speechDate: string;
 

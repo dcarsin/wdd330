@@ -1,4 +1,4 @@
-import { Get, JsonController, QueryParam, Res } from 'routing-controllers';
+import { Body, Get, JsonController, Post, QueryParam, Req, Res } from 'routing-controllers';
 import { ResponseSchema } from 'routing-controllers-openapi';
 import { Service } from 'typedi';
 import { SpeechService } from '../services/SpeechService';
@@ -28,6 +28,21 @@ export class SpeechesController {
       return response
         .status(500)
         .json({ code: 500, message: 'There was an error with your request' });
+    }
+  }
+
+  @ResponseSchema(Speech)
+  @Post()
+  public async create(
+    @Body() body,
+    @Res() response
+  ): Promise<any>{
+    try{
+      console.log(body)
+      return response.status(200).json(await this.SpeechService.create(body));
+    } catch(error) {
+      console.log(error)
+      return response.status(500).json({code: 500, message: `There was an error creating the speech: ${error.message}`});
     }
   }
 }

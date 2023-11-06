@@ -8,7 +8,7 @@ const app: Application = createExpressServer({
   routePrefix: '/api',
   defaultErrorHandler: false,
   middlewares: [__dirname + '/middlewares/**/*{.ts,.js}'],
-  controllers: [__dirname + '\\controllers\\MembersController.ts'],
+  controllers: [__dirname + '\\controllers\\**\\*{.ts,.js}'],
   classTransformer: true,
 });
 
