@@ -1,62 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Message</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script defer src="process.js"></script>
-</head>
+  </head>
 
-<body onload="loadMessage()">
+  <body onload="loadMessage()">
     <header>
-        <picture>
-            <img src="images/logo.png" alt="Discurso Logo">
-        </picture>
+      <picture>
+        <img src="images/logo.png" alt="Discurso Logo" />
+      </picture>
     </header>
     <nav>
-        <ul class="navigation">
-            <li><a href="index.html">Generate Assignment</a></li>
-            <li><a href="profile.html">Modify Member</a></li>
-        </ul>
+      <ul class="navigation">
+        <li><a href="index.html">Generate Assignment</a></li>
+        <li><a href="profile.html">Modify Member</a></li>
+      </ul>
     </nav>
     <main>
-        <div id="write"></div>
-        <footer>
-            <p>Powered by: El Bosque Ward</p>
-        </footer>
+      <div id="write"></div>
+      <footer>
+        <p>Powered by: El Bosque Ward</p>
+      </footer>
     </main>
     <script>
-        // data ?topic=Sacerdocio&topicLink=https%3A%2F%2Fwww.churchofjesuschrist.org%2F%3Flang%3Deng&speakerAge=adult&gender=both&speechType=speech&minutes=2&speakersList=Diaz%2C+Graciela&stormDate=2023-07-23
-        function loadMessage() {
-            const data = window.location.search;
-            const topic = data.split('topic=')[1].split('&')[0];
-            const speechType = data.split('speechType=')[1].split('&')[0];
-            const min = data.split('minutes=')[1].split('&')[0];
-            const speaker = data.split('speakersList=')[1].split('&')[0]; console.log("speaker", speaker);//Domonte+Casero%2C+Jorge+Valeriano
-            const lName = speaker.split('%2C+')[0];
-            let lastName, name;
-            if (speaker.split('%2C+')[0].includes('+')) {
-                lastName = speaker.split('%2C+')[0].split('+')[0];
-            } else {
-                lastName = speaker.split('%2C+')[0];
-            }
-            if (speaker.split('%2C+')[1].includes('+')) {
-                name = speaker.split('%2C+')[1].split('+')[0];
-            } else {
-                name = speaker.split('%2C+')[1]
-            }
-
-            const talkDate = data.split('stormDate=')[1];
-            let message = "<p>Dear Brother/Sister: " + lastName + ", " + name + ".</p><p> We invite you to participate in the sacrament meeting of " + talkDate + " with a  " + speechType + " of " + min
-                + " minutes, with the following topic: " + topic + ".</p><p> We advise you to teach the doctrines of the Gospel, to relate faith-building experiences, and to give your "
-                + "testimony of divinely revealed truths. Seek inspiration for your speech from the Scriptures, talks given by general authorities or Church manuals.</p> "
-                + "<p>You should not speak on subjects that are speculative or controversial or that are not in harmony with Church doctrine. Avoid repeating or reading the enire speech "
-                + "of the general authorities, however, you may quote them.</p><p> You are invited to be seated at the pulpit 5 minutes before the meeting begins.</p>";
-            document.getElementById("write").innerHTML = message;
+      // data ?topic=Sacerdocio&topicLink=https%3A%2F%2Fwww.churchofjesuschrist.org%2F%3Flang%3Deng&speakerAge=adult&gender=both&speechType=speech&minutes=2&speakersList=Diaz%2C+Graciela&stormDate=2023-07-23
+      async function loadMessage() {
+        const data = window.location.search
+        const topic = data.split('topic=')[1].split('&')[0]
+        const speechType = data.split('speechType=')[1].split('&')[0]
+        const min = data.split('minutes=')[1].split('&')[0]
+        const speaker = data.split('speakersList=')[1].split('&')[0]
+        console.log('speaker', speaker) //Domonte+Casero%2C+Jorge+Valeriano
+        const lName = speaker.split('%2C+')[0]
+        let lastName, name
+        if (speaker.split('%2C+')[0].includes('+')) {
+          lastName = speaker.split('%2C+')[0].split('+')[0]
+        } else {
+          lastName = speaker.split('%2C+')[0]
         }
-    </script>
-</body>
+        if (speaker.split('%2C+')[1].includes('+')) {
+          name = speaker.split('%2C+')[1].split('+')[0]
+        } else {
+          name = speaker.split('%2C+')[1]
+        }
 
+        const memberId = parseInt(speaker.split('-')[0]);
+
+        const talkDate = data.split('stormDate=')[1]
+
+        const request = new XMLHttpRequest();
+        await fetch("http://localhost:4200/api/speeches", {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({speechMemberId: parseInt(memberId), speechDuration: parseInt(min), speechTopic: topic,speechDate: talkDate}),
+        });
+        let message =
+          '<p>Dear Brother/Sister: ' +
+          lastName +
+          ', ' +
+          name +
+          '.</p><p> We invite you to participate in the sacrament meeting of ' +
+          talkDate +
+          ' with a  ' +
+          speechType +
+          ' of ' +
+          min +
+          ' minutes, with the following topic: ' +
+          topic +
+          '.</p><p> We advise you to teach the doctrines of the Gospel, to relate faith-building experiences, and to give your ' +
+          'testimony of divinely revealed truths. Seek inspiration for your speech from the Scriptures, talks given by general authorities or Church manuals.</p> ' +
+          '<p>You should not speak on subjects that are speculative or controversial or that are not in harmony with Church doctrine. Avoid repeating or reading the enire speech ' +
+          'of the general authorities, however, you may quote them.</p><p> You are invited to be seated at the pulpit 5 minutes before the meeting begins.</p>'
+        document.getElementById('write').innerHTML = message
+      }
+      async function generateSpeech() {
+        const speaker = document.getElementById('speakersList')
+        const duration = document.getElementById('minutes')
+        const topic = document.getElementById('topic')
+        const date = document.getElementById('stormDate')
+
+        console.log(speaker, duration, topic, date)
+      }
+    </script>
+  </body>
 </html>
