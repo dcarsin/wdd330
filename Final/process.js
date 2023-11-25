@@ -35,8 +35,8 @@ async function fetchMembersJSON(group, gender, active) {
     const members = await response.json()
     members.forEach((x) => {
       let opt = document.createElement('option')
-      opt.setAttribute('data-value', `${x.memberLastName}, ${x.memberName}`)
-      opt.textContent = `${x.memberLastName}, ${x.memberName}`
+      opt.setAttribute('data-value', `${x.memberID}, ${x.memberLastName}, ${x.memberName}`)
+      opt.textContent = `${x.memberId}-${x.memberLastName}, ${x.memberName}`
       if (opt != null) {
         document.querySelector('#speakersList').appendChild(opt)
       }
